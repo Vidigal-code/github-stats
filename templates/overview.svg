@@ -10,14 +10,14 @@ svg {
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   fill: black;
-  stroke: rgb(225, 228, 232);
+  stroke: #2aa889;
   stroke-width: 1px;
   rx: 6px;
   ry: 6px;
 }
 
 #gh-dark-mode-only:target #background {
-  fill: #0d1117;
+  fill: #2aa889;
   stroke-width: 0.5px;
 }
 
