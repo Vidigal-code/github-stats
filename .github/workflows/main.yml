@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron: "5 0 * * *"
+    - cron: "2 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
     - name: Generate images
       run: |
         python3 --version
-        python3 git_stats_imgs.py
+        python3 generate_images.py
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,10 +59,15 @@ jobs:
         MORE_REPOS: ${{ secrets.MORE_REPOS }}
         ONLY_INCLUDED: ${{ secrets.ONLY_INCLUDED }}
 
+  
+        EXCLUDE_FORKED_REPOS: true
+
+    # Commit all changed files to the repository
     - name: Commit to the repo
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
+        git config --global user.name "Vidigal-code/github-stats"
+        git config --global user.email "github-stats[bot]@jstrieb.github.io"
         git add .
-        git commit -m 'Auto Update GitHub stats images' || echo
-        git push origin actions_branch --force
+        # Force the build to succeed, even if no files were changed
+        git commit -m 'Update generated files' || true
+        git push
