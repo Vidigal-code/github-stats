@@ -101,19 +101,19 @@ div.ellipsis {
 
 @media (prefers-color-scheme: dark) {
   h2 {
-    color: #539bf5;
+    color: #2aa889;
   }
 
   .octicon {
-    fill: #768390;
+    fill: #2aa889;
   }
 
   .lang {
-    color: #adbac7;
+    color: #2aa889;
   }
 
   .percent {
-    color: #768390;
+    color: white;
   }
 }
 
